@@ -14,7 +14,7 @@ class ProfileController extends Controller
         return view('mypage.profile_edit_form')->with('user', Auth::user());
     }
 
-    public function editProfile(Request $request)
+    public function editProfile(EditRequest $request)
     {
         $user = Auth::user();
 
