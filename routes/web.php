@@ -31,10 +31,10 @@ Route::group(['prefix'=>'mypage', 'middleware' =>'auth'], function(){
 });
 
 // 教材のルーティングの書き方
-/**Route::prefix('mypage')
-    ->namespace('MyPage')
-    ->middleware('auth')
-    ->group(function () {
-        Route::get('edit-profile', 'ProfileController@showProfileEditForm')->name('mypage.edit-profile');
-        Route::post('edit-profile', 'ProfileController@editProfile')->name('mypage.edit-profile');
-    });
+// Route::prefix('mypage')
+//     ->namespace('MyPage')
+//     ->middleware('auth')
+//     ->group(function () {
+//         Route::get('edit-profile', 'ProfileController@showProfileEditForm')->name('mypage.edit-profile');
+//         Route::post('edit-profile', 'ProfileController@editProfile')->name('mypage.edit-profile');
+//     });
