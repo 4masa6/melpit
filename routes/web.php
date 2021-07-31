@@ -21,13 +21,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('sell', 'SellController@showSellForm')->name('sell');
+});
+
 Route::group(['prefix'=>'mypage', 'middleware' =>'auth'], function(){
     Route::get('edit-profile', 'Mypage\ProfileController@showProfileEditForm')->name('mypage.edit-profile');
     Route::post('edit-profile', 'Mypage\ProfileController@editProfile')->name('mypage.edit-profile');
 });
 
 // 教材のルーティングの書き方
-Route::prefix('mypage')
+/**Route::prefix('mypage')
     ->namespace('MyPage')
     ->middleware('auth')
     ->group(function () {
