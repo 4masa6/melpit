@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('sell', 'SellController@showSellForm')->name('sell');
+    Route::post('sell', 'SellController@sellItem')->name('sell');
 });
 
 Route::group(['prefix'=>'mypage', 'middleware' =>'auth'], function(){
