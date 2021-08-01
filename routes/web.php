@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('top');
+Route::get('', 'ItemsController@showItems')->name('top');
 
 Auth::routes();
 
