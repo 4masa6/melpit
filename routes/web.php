@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,15 +21,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('items/{item}', function(){return "商品詳細";})->name('item');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('sell', 'SellController@showSellForm')->name('sell');
     Route::post('sell', 'SellController@sellItem')->name('sell');
 });
 
+// コントローラー名の前に名前空間『Mypage\』をつけ忘れないこと！
 Route::group(['prefix'=>'mypage', 'middleware' =>'auth'], function(){
     Route::get('edit-profile', 'Mypage\ProfileController@showProfileEditForm')->name('mypage.edit-profile');
     Route::post('edit-profile', 'Mypage\ProfileController@editProfile')->name('mypage.edit-profile');
+    Route::get('sold-items', 'Mypage\SoldItemsController@showSoldItems')->name('mypage.sold-items');
 });
 
 // 教材のルーティングの書き方
